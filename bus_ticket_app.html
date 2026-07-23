@@ -44,15 +44,28 @@
   .header-row small { display: block; font-size: 12px; opacity: 0.7; margin-top: 3px; }
 
   /* S1 */
-  .s1-body { padding: 24px 20px; flex: 1; display: flex; flex-direction: column; background: var(--color-background-tertiary); }
+  .s1-body { padding: 40px 20px 24px; flex: 1; display: flex; flex-direction: column; background: var(--color-background-tertiary); }
   .field { margin-bottom: 16px; }
-  .field label { font-size: 13px; color: var(--color-text-secondary); font-weight: 500; margin-bottom: 7px; display: block; }
+  .field label { font-size: 13px; color: var(--color-text-secondary); font-weight: 500; margin-bottom: 7px; display: block; text-align: center; }
   .field input { width: 100%; padding: 12px 14px; border: 1px solid var(--color-border-secondary); border-radius: var(--border-radius-md); font-size: 16px; background: var(--color-background-primary); color: var(--color-text-primary); outline: none; letter-spacing: 3px; font-family: var(--font-sans); }
   .field input::placeholder { letter-spacing: 1px; font-size: 14px; color: var(--color-text-tertiary); }
   .field input:focus { border-color: #1a3c6b; }
+  .code-row { display: flex; flex-direction: column; align-items: center; }
+  .code-row .input-group { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .code-row input { width: calc(16ch + 30px); font-size: 24px; letter-spacing: 0; font-family: 'Courier New', monospace; text-align: center; }
+  .code-row .char-hint { text-align: center; }
+  .send-btn { width: calc(16ch + 30px); padding: 12px 16px; background: #1a3c6b; color: #fff; border: none; border-radius: var(--border-radius-md); font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; font-family: var(--font-sans); margin: 0 auto; }
+  .send-btn:hover { background: #15335a; }
   .char-hint { font-size: 11px; color: var(--color-text-tertiary); margin-top: 5px; text-align: right; }
-  .err-msg { font-size: 12px; color: #dc2626; margin-top: 6px; display: none; }
-  .login-btn { width: 100%; padding: 14px; background: #1a3c6b; color: #fff; border: none; border-radius: var(--border-radius-md); font-size: 16px; font-weight: 500; cursor: pointer; margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-sans); }
+  .err-msg { font-size: 12px; color: #dc2626; margin-top: 6px; text-align: center; visibility: hidden; min-height: 18px; }
+  .login-btn { width: 100%; padding: 14px; background: #1a3c6b; color: #fff; border: none; border-radius: var(--border-radius-md); font-size: 16px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font-sans); }
+  .cancel-btn { width: 100%; padding: 12px; background: #dc2626; color: #fff; border: none; border-radius: var(--border-radius-md); font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 8px; font-family: var(--font-sans); }
+  .cancel-btn:hover { background: #b91c1c; }
+  .otp-row { display: flex; align-items: center; justify-content: space-between; margin-top: 6px; }
+  #otpTimer { font-size: 13px; color: var(--color-text-secondary); }
+  #resendOtpBtn { font-size: 13px; background: #e2e8f0; border: none; border-radius: 6px; padding: 6px 14px; cursor: pointer; color: var(--color-text-secondary); font-family: var(--font-sans); }
+  #resendOtpBtn:disabled { opacity: 0.4; cursor: default; }
+  #resendOtpBtn:enabled { background: #1a3c6c; color: #fff; }
 
   /* S2 */
   .s2-body { flex: 1; display: flex; flex-direction: column; background: var(--color-background-tertiary); padding: 14px 0; min-height: 0; }
@@ -155,6 +168,16 @@
   .about-text strong { color: #1a3c6b; }
   .about-footer { margin-top: 18px; font-size: 11px; color: var(--color-text-tertiary); letter-spacing: 1px; text-transform: uppercase; }
 
+
+
+  /* Trip Details */
+  .trip-body { flex: 1; padding: 16px; background: var(--color-background-tertiary); overflow-y: auto; min-height: 0; }
+  .trip-card { background: var(--color-background-primary); border-radius: var(--border-radius-lg); padding: 4px 0; overflow: hidden; }
+  .trip-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; }
+  .trip-row + .trip-row { border-top: 1px solid var(--color-border-tertiary); }
+  .trip-label { font-size: 13px; color: var(--color-text-secondary); font-weight: 500; }
+  .trip-val { font-size: 15px; color: var(--color-text-primary); font-weight: 600; }
+
   /* Menu */
   .menu-container { position: relative; }
   .menu-btn { background: rgba(255,255,255,0.15); border: none; color: #fff; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; }
@@ -166,8 +189,6 @@
   .menu-item-danger { color: #dc2626; }
   .menu-divider { height: 1px; background: #e2e8f0; }
 
-  /* Trip Details */
-  .trip-body { flex: 1; padding: 16px; background: var(--color-background-tertiary); overflow-y: auto; min-height: 0; }
 
   /* Issued Tickets */
   .tickets-body { flex: 1; padding: 16px; background: var(--color-background-tertiary); overflow-y: auto; min-height: 0; }
@@ -176,8 +197,33 @@
   .ticket-card .tkt-no { font-size: 14px; font-weight: 600; color: #1a3c6b; }
   .ticket-card .tkt-route { font-size: 12px; color: var(--color-text-secondary); margin-top: 4px; }
   .ticket-card .tkt-fare { font-size: 16px; font-weight: 700; color: var(--color-text-primary); }
+  .ticket-card .tkt-name { font-size: 14px; color: var(--color-text-primary); font-weight: 600; margin-top: 6px; }
+  .ticket-card .tkt-aadhar { font-size: 12px; color: var(--color-text-tertiary); margin-top: 2px; letter-spacing: 1px; font-family: 'Courier New', monospace; }
+  .ticket-card .tkt-mode { font-size: 11px; color: #1a3c6b; font-weight: 600; margin-top: 4px; }
   .ticket-card .tkt-footer { font-size: 10px; color: var(--color-text-tertiary); margin-top: 6px; }
+
+  /* Passenger Summary */
+  .summary-body { flex: 1; padding: 16px; background: var(--color-background-tertiary); overflow-y: auto; min-height: 0; }
+  .summary-totals { background: #1a3c6b; border-radius: var(--border-radius-lg); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+  .summary-totals .s-total { display: flex; justify-content: space-between; align-items: center; }
+  .summary-totals .s-total .s-num { font-size: 18px; font-weight: 700; color: #fff; }
+  .summary-totals .s-total .s-lbl { font-size: 12px; color: rgba(255,255,255,0.6); }
+  .summary-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .summary-modes .s-mode { background: var(--color-background-primary); border-radius: var(--border-radius-md); border: 1px solid var(--color-border-tertiary); padding: 12px; text-align: center; }
+  .summary-modes .sm-icon { font-size: 20px; color: #1a3c6b; margin-bottom: 4px; }
+  .summary-modes .sm-label { font-size: 11px; color: var(--color-text-secondary); }
+  .summary-modes .sm-count { font-size: 12px; color: var(--color-text-tertiary); margin-top: 2px; }
+  .summary-modes .sm-amount { font-size: 15px; font-weight: 700; color: var(--color-text-primary); margin-top: 2px; }
+  .summary-stop { background: var(--color-background-primary); border-radius: var(--border-radius-md); border: 1px solid var(--color-border-tertiary); padding: 12px 14px; margin-bottom: 8px; }
+  .summary-stop .ss-name { font-size: 14px; font-weight: 600; color: var(--color-text-primary); }
+  .summary-stop .ss-stats { display: flex; gap: 12px; margin-top: 6px; font-size: 12px; color: var(--color-text-secondary); }
+  .summary-stop .ss-stats span { flex: 1; text-align: center; }
+  .summary-stop .ss-stats .ss-green { color: #16a34a; font-weight: 600; }
+  .summary-stop .ss-stats .ss-red { color: #dc2626; font-weight: 600; }
+  .summary-stop .ss-stats .ss-gray { color: var(--color-text-tertiary); }
 </style>
+</head>
+<body>
 
 <div class="app-shell">
 
@@ -191,17 +237,31 @@
     </div>
     <div class="s1-body">
       <div class="field">
-        <label>Trip code</label>
-        <input type="tel" id="busCode" value="042871" maxlength="6" inputmode="numeric"
-          oninput="this.value=this.value.replace(/\D/g,'');document.getElementById('codeHint').textContent=this.value.length+' / 6 digits';" />
-        <div class="char-hint" id="codeHint">6 / 6 digits</div>
+          <label style="font-size:26px;">Trip code</label>
+        <div class="code-row">
+          <div class="input-group">
+            <input type="text" id="busCode" value="230726CHEN123456" maxlength="16"
+              oninput="this.value=this.value.replace(/[^a-zA-Z0-9]/g,'');document.getElementById('codeHint').textContent=this.value.length+' / 16 characters (6 digits + 4 letters + 6 digits)';" />
+            <div class="char-hint" id="codeHint">16 / 16 characters (6 digits + 4 letters + 6 digits)</div>
+          </div>
+        </div>
+        <div class="err-msg" id="errMsg">Enter a valid trip code (6 digits + 4 letters + 6 digits).</div>
       </div>
-      <div class="field">
-        <label>Password</label>
-        <input type="password" id="pwd" value="test123" style="letter-spacing:4px;" />
-        <div class="err-msg" id="errMsg">Enter a valid 6-digit trip code and password.</div>
+      <button class="send-btn" id="sendOtpBtn" onclick="sendOtp()"><i class="ti ti-send"></i> Send OTP</button>
+      <div id="otpSection" style="display:none;text-align:center;">
+        <div class="field" style="text-align:center;">
+          <label>OTP</label>
+          <input type="text" id="otpInput" maxlength="4" inputmode="numeric" value="1234"
+            oninput="this.value=this.value.replace(/\D/g,'')" placeholder="0000" style="width:calc(4ch + 30px);font-family:'Courier New',monospace;font-size:24px;text-align:center;letter-spacing:0;" />
+        </div>
+        <div class="otp-row">
+          <span id="otpTimer">Resend in 60s</span>
+          <button id="resendOtpBtn" onclick="resendOtp()" disabled>Resend</button>
+        </div>
+        <div class="err-msg" id="otpErrMsg">Enter a valid 4-digit OTP.</div>
       </div>
-      <button class="login-btn" onclick="doLogin()"><i class="ti ti-login"></i> Login</button>
+      <button class="login-btn" id="verifyOtpBtn" onclick="verifyOtp()" style="display:none;"><i class="ti ti-login"></i> Verify</button>
+      <button class="cancel-btn" id="cancelOtpBtn" onclick="cancelOtp()" style="display:none;"><i class="ti ti-x"></i> Cancel</button>
     </div>
   </div>
 
@@ -215,6 +275,7 @@
         <div class="menu-dropdown" id="menuDropdown">
           <button class="menu-item" onclick="showTripDetails()">Trip Details</button>
           <button class="menu-item" onclick="showIssuedTickets()">Issued Tickets</button>
+          <button class="menu-item" onclick="showPassengerSummary()">Passenger Summary</button>
           <button class="menu-item" onclick="showAbout()">About</button>
           <div class="menu-divider"></div>
           <button class="menu-item menu-item-danger" onclick="logout()">Logout</button>
@@ -340,35 +401,18 @@
   <div class="screen" id="sTrip">
     <div class="status-bar"><span>9:44</span><span>●●● <i class="ti ti-wifi"></i></span></div>
     <div class="header-row">
-      <button class="back-btn" onclick="closeMenuScreen()"><i class="ti ti-arrow-left"></i></button>
+      <button class="back-btn" onclick="goTo('s2')"><i class="ti ti-arrow-left"></i></button>
       <div style="flex:1;"><h1>Trip Details</h1><small>Current trip info</small></div>
-      <div class="menu-container">
-        <button class="menu-btn" onclick="toggleMenu()"><i class="ti ti-dots-vertical"></i></button>
-        <div class="menu-dropdown" id="menuDropdown">
-          <button class="menu-item" onclick="showTripDetails()">Trip Details</button>
-          <button class="menu-item" onclick="showIssuedTickets()">Issued Tickets</button>
-          <button class="menu-item" onclick="showAbout()">About</button>
-          <div class="menu-divider"></div>
-          <button class="menu-item menu-item-danger" onclick="logout()">Logout</button>
-        </div>
-      </div>
     </div>
     <div class="trip-body">
-      <div class="journey-block">
-        <div class="journey-route">
-          <div class="j-stop"><div class="j-name" id="tripFrom">—</div><div class="j-sub">Origin</div></div>
-          <div class="j-arrow"><div style="font-size:16px;">🚌</div><div class="j-line"></div></div>
-          <div class="j-stop"><div class="j-name" id="tripTo">—</div><div class="j-sub">Destination</div></div>
-        </div>
-        <div class="journey-details">
-          <div class="j-detail"><div class="j-val" id="tripBusCode">—</div><div class="j-label">Trip code</div></div>
-          <div class="j-sep"></div>
-          <div class="j-detail"><div class="j-val" id="tripStops">—</div><div class="j-label">Stops</div></div>
-          <div class="j-sep"></div>
-          <div class="j-detail"><div class="j-val" id="tripTicketNo">—</div><div class="j-label">Ticket no.</div></div>
-          <div class="j-sep"></div>
-          <div class="j-detail"><div class="j-val" id="tripStatus">Active</div><div class="j-label">Status</div></div>
-        </div>
+      <div class="trip-card">
+        <div class="trip-row"><span class="trip-label">Trip code</span><span class="trip-val" id="tripBusCode">—</span></div>
+        <div class="trip-row"><span class="trip-label">From</span><span class="trip-val" id="tripFrom">—</span></div>
+        <div class="trip-row"><span class="trip-label">To</span><span class="trip-val" id="tripTo">—</span></div>
+        <div class="trip-row"><span class="trip-label">Start time</span><span class="trip-val" id="tripStartTime">—</span></div>
+        <div class="trip-row"><span class="trip-label">End time</span><span class="trip-val" id="tripEndTime">—</span></div>
+        <div class="trip-row"><span class="trip-label">Driver ID</span><span class="trip-val" id="tripDriverId">—</span></div>
+        <div class="trip-row"><span class="trip-label">Conductor ID</span><span class="trip-val" id="tripConductorId">—</span></div>
       </div>
     </div>
   </div>
@@ -377,18 +421,8 @@
   <div class="screen" id="sTickets">
     <div class="status-bar"><span>9:44</span><span>●●● <i class="ti ti-wifi"></i></span></div>
     <div class="header-row">
-      <button class="back-btn" onclick="closeMenuScreen()"><i class="ti ti-arrow-left"></i></button>
+      <button class="back-btn" onclick="goTo('s2')"><i class="ti ti-arrow-left"></i></button>
       <div style="flex:1;"><h1>Issued Tickets</h1><small>All tickets this trip</small></div>
-      <div class="menu-container">
-        <button class="menu-btn" onclick="toggleMenu()"><i class="ti ti-dots-vertical"></i></button>
-        <div class="menu-dropdown" id="menuDropdown">
-          <button class="menu-item" onclick="showTripDetails()">Trip Details</button>
-          <button class="menu-item" onclick="showIssuedTickets()">Issued Tickets</button>
-          <button class="menu-item" onclick="showAbout()">About</button>
-          <div class="menu-divider"></div>
-          <button class="menu-item menu-item-danger" onclick="logout()">Logout</button>
-        </div>
-      </div>
     </div>
     <div class="tickets-body" id="ticketsList">
     </div>
@@ -398,7 +432,7 @@
   <div class="screen" id="sAbout">
     <div class="status-bar"><span>9:44</span><span>●●● <i class="ti ti-wifi"></i></span></div>
     <div class="header-row">
-      <button class="back-btn" onclick="closeMenuScreen()"><i class="ti ti-arrow-left"></i></button>
+      <button class="back-btn" onclick="goTo('s2')"><i class="ti ti-arrow-left"></i></button>
       <div style="flex:1;"><h1>About</h1><small>Our vision</small></div>
     </div>
     <div class="about-body">
@@ -414,6 +448,17 @@
         </div>
         <div class="about-footer">BusTicket</div>
       </div>
+    </div>
+  </div>
+
+  <!-- PASSENGER SUMMARY -->
+  <div class="screen" id="sSummary">
+    <div class="status-bar"><span>9:44</span><span>●●● <i class="ti ti-wifi"></i></span></div>
+    <div class="header-row">
+      <button class="back-btn" onclick="goTo('s2')"><i class="ti ti-arrow-left"></i></button>
+      <div style="flex:1;"><h1>Passenger Summary</h1><small id="summaryBusCode">—</small></div>
+    </div>
+    <div class="summary-body" id="summaryBody">
     </div>
   </div>
 
@@ -465,22 +510,75 @@ const CHILD_COLS = ["#1a3c6b","#1c6b3c","#7c3aed","#b45309","#be185d","#0e7490"]
 let appState = { busCode:'', selectedStop:null, adults:0, children:0 };
 let ticketCounter = 1;
 let camStream = null;
+let ticketData = [];
+
+fetch('sample_data.json').then(r => r.json()).then(d => { ticketData = d; }).catch(() => {});
 
 function goTo(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-function doLogin() {
+let otpTimer = null;
+let otpCountdown = 0;
+
+function sendOtp() {
   const code = document.getElementById('busCode').value.trim();
-  const pwd  = document.getElementById('pwd').value;
   const err  = document.getElementById('errMsg');
-  if (code.length !== 6 || !pwd) { err.style.display='block'; return; }
-  err.style.display = 'none';
+  if (!/^\d{6}[a-zA-Z]{4}\d{6}$/.test(code)) { err.style.visibility='visible'; return; }
+  err.style.visibility = 'hidden';
+  document.getElementById('otpErrMsg').style.visibility = 'hidden';
+  document.getElementById('sendOtpBtn').style.display = 'none';
+  document.getElementById('otpSection').style.display = 'block';
+  document.getElementById('verifyOtpBtn').style.display = 'flex';
+  document.getElementById('cancelOtpBtn').style.display = 'flex';
+  startOtpTimer();
+}
+
+function startOtpTimer() {
+  otpCountdown = 60;
+  const timerEl = document.getElementById('otpTimer');
+  const resendBtn = document.getElementById('resendOtpBtn');
+  resendBtn.disabled = true;
+  timerEl.textContent = 'Resend in 60s';
+  clearInterval(otpTimer);
+  otpTimer = setInterval(() => {
+    otpCountdown--;
+    timerEl.textContent = 'Resend in ' + otpCountdown + 's';
+    if (otpCountdown <= 0) {
+      clearInterval(otpTimer);
+      timerEl.textContent = 'OTP expired';
+      resendBtn.disabled = false;
+    }
+  }, 1000);
+}
+
+function resendOtp() {
+  startOtpTimer();
+}
+
+function verifyOtp() {
+  const code = document.getElementById('busCode').value.trim();
+  const otp  = document.getElementById('otpInput').value.trim();
+  const err  = document.getElementById('otpErrMsg');
+  if (otp.length !== 4) { err.style.visibility='visible'; return; }
+  err.style.visibility = 'hidden';
+  clearInterval(otpTimer);
   appState.busCode = code;
   document.getElementById('s2BusCode').textContent = 'Trip: ' + code;
   buildStops();
   goTo('s2');
+}
+
+function cancelOtp() {
+  clearInterval(otpTimer);
+  document.getElementById('otpSection').style.display = 'none';
+  document.getElementById('verifyOtpBtn').style.display = 'none';
+  document.getElementById('cancelOtpBtn').style.display = 'none';
+  document.getElementById('sendOtpBtn').style.display = 'flex';
+  document.getElementById('otpInput').value = '';
+  document.getElementById('otpErrMsg').style.visibility = 'hidden';
+  document.getElementById('errMsg').style.visibility = 'hidden';
 }
 
 function buildStops() {
@@ -673,14 +771,13 @@ function closeMenuScreen() {
 
 function showTripDetails() {
   closeMenu();
+  document.getElementById('tripBusCode').textContent = appState.busCode || '—';
   document.getElementById('tripFrom').textContent = STOPS[0].name;
   document.getElementById('tripTo').textContent = STOPS[STOPS.length - 1].name;
-  document.getElementById('tripBusCode').textContent = appState.busCode || '—';
-  const currentIdx = STOPS.findIndex(s => s.state === 'current');
-  const totalStops = STOPS.length - 1;
-  document.getElementById('tripStops').textContent = totalStops + ' stop' + (totalStops > 1 ? 's' : '');
-  const tktNo = 'TKT-' + String(ticketCounter).padStart(3, '0');
-  document.getElementById('tripTicketNo').textContent = tktNo;
+  document.getElementById('tripStartTime').textContent = '6:30 AM';
+  document.getElementById('tripEndTime').textContent = '8:45 AM';
+  document.getElementById('tripDriverId').textContent = 'DRV-042';
+  document.getElementById('tripConductorId').textContent = 'CND-017';
   goTo('sTrip');
 }
 
@@ -688,25 +785,64 @@ function showIssuedTickets() {
   closeMenu();
   const list = document.getElementById('ticketsList');
   list.innerHTML = '';
-  const samples = [
-    { no: 'TKT-001', from: 'AVADI', to: 'POLYTECHNIC', fare: '₹23', pax: '1 Adult', time: '8:15 AM' },
-    { no: 'TKT-002', from: 'AVADI', to: 'AMBATTUR O.T.', fare: '₹29', pax: '2 Adult', time: '8:22 AM' },
-    { no: 'TKT-003', from: 'POLYTECHNIC', to: 'DUNLOP', fare: '₹26', pax: '1 Adult + 1 Child', time: '8:38 AM' },
-    { no: 'TKT-004', from: 'THIRUMULLAIVOYAL', to: 'AMBATTUR I.E.', fare: '₹23', pax: '1 Adult', time: '8:45 AM' },
-    { no: 'TKT-005', from: 'AMBATTUR O.T.', to: 'LUCAS TVS', fare: '₹32', pax: '2 Adult', time: '9:00 AM' },
-    { no: 'TKT-006', from: 'DUNLOP', to: 'THIRUMANGALAM', fare: '₹26', pax: '1 Adult', time: '9:12 AM' },
-    { no: 'TKT-007', from: 'AMBATTUR I.E.', to: 'KOYAMBEDU', fare: '₹35', pax: '2 Adult', time: '9:25 AM' },
-    { no: 'TKT-008', from: 'LUCAS TVS', to: 'M.M.D.A.COLONY RD.JN.', fare: '₹29', pax: '1 Adult + 1 Child', time: '9:40 AM' },
-    { no: 'TKT-009', from: 'THIRUMANGALAM', to: 'JAFFARKHAN PET', fare: '₹32', pax: '2 Adult', time: '9:48 AM' },
-    { no: 'TKT-010', from: 'AVADI', to: 'TAMBARAM', fare: '₹68', pax: '3 Adult', time: '10:05 AM' },
-  ];
-  samples.forEach(t => {
+  const data = ticketData.length ? ticketData : [];
+  data.forEach(t => {
     const card = document.createElement('div');
     card.className = 'ticket-card';
-    card.innerHTML = `<div class="tkt-header"><span class="tkt-no">${t.no}</span><span class="tkt-fare">${t.fare}</span></div><div class="tkt-route">${t.from} → ${t.to}</div><div class="tkt-footer">${t.pax} · ${t.time}</div>`;
+    const maskedAadhar = '××××××××' + t.aadhar.slice(-4);
+    card.innerHTML = `<div class="tkt-header"><span class="tkt-no">${t.no}</span><span class="tkt-fare">₹${t.fare}</span></div><div class="tkt-route">${t.from} → ${t.to}</div><div class="tkt-footer">${t.pax} · ${t.time}</div><div class="tkt-name">${t.name}</div><div class="tkt-aadhar">Aadhar: ${maskedAadhar}</div><div class="tkt-mode">${t.mode}</div>`;
     list.appendChild(card);
   });
   goTo('sTickets');
+}
+
+function showPassengerSummary() {
+  closeMenu();
+  const tickets = ticketData.length ? ticketData : [];
+  const totalTickets = tickets.length;
+  const totalAmount = tickets.reduce((s, t) => s + t.fare, 0);
+  const collectedAmount = Math.round(totalAmount * 0.7);
+  const inProcessAmount = totalAmount - collectedAmount;
+  const faceCount = tickets.filter(t => t.mode === 'Face Photo').length;
+  const mobileNfcCount = tickets.filter(t => t.mode === 'Mobile NFC').length;
+  const cardNfcCount = tickets.filter(t => t.mode === 'Card NFC').length;
+  const cashCount = tickets.filter(t => t.mode === 'Cash').length;
+  const faceAmount = tickets.filter(t => t.mode === 'Face Photo').reduce((s, t) => s + t.fare, 0);
+  const mobileNfcAmount = tickets.filter(t => t.mode === 'Mobile NFC').reduce((s, t) => s + t.fare, 0);
+  const cardNfcAmount = tickets.filter(t => t.mode === 'Card NFC').reduce((s, t) => s + t.fare, 0);
+  const cashAmount = tickets.filter(t => t.mode === 'Cash').reduce((s, t) => s + t.fare, 0);
+
+  document.getElementById('summaryBusCode').textContent = appState.busCode || '—';
+  const body = document.getElementById('summaryBody');
+  body.innerHTML = `
+    <div class="summary-totals">
+      <div class="s-total"><span class="s-lbl">Total Tickets Issued</span><span class="s-num">${totalTickets}</span></div>
+      <div class="s-total"><span class="s-lbl">Total Amount</span><span class="s-num">₹${totalAmount}</span></div>
+      <div class="s-total"><span class="s-lbl">Already Collected</span><span class="s-num">₹${collectedAmount}</span></div>
+      <div class="s-total"><span class="s-lbl">In Process</span><span class="s-num">₹${inProcessAmount}</span></div>
+    </div>
+    <div class="summary-modes">
+      <div class="s-mode"><div class="sm-icon"><i class="ti ti-camera"></i></div><div class="sm-label">Face Photo</div><div class="sm-count">${faceCount} tickets</div><div class="sm-amount">₹${faceAmount}</div></div>
+      <div class="s-mode"><div class="sm-icon"><i class="ti ti-device-mobile"></i></div><div class="sm-label">Mobile NFC</div><div class="sm-count">${mobileNfcCount} tickets</div><div class="sm-amount">₹${mobileNfcAmount}</div></div>
+      <div class="s-mode"><div class="sm-icon"><i class="ti ti-credit-card"></i></div><div class="sm-label">Card NFC</div><div class="sm-count">${cardNfcCount} tickets</div><div class="sm-amount">₹${cardNfcAmount}</div></div>
+      <div class="s-mode"><div class="sm-icon"><i class="ti ti-cash"></i></div><div class="sm-label">Cash</div><div class="sm-count">${cashCount} tickets</div><div class="sm-amount">₹${cashAmount}</div></div>
+    </div>`;
+
+  const currentIdx = STOPS.findIndex(s => s.state === 'current');
+  STOPS.forEach((stop, i) => {
+    const getIn = Math.floor(Math.random() * 5) + 1;
+    const getDown = Math.floor(Math.random() * 4);
+    const stateClass = i < currentIdx ? 'ss-gray' : i === currentIdx ? 'ss-green' : '';
+    body.innerHTML += `
+      <div class="summary-stop">
+        <div class="ss-name">${stop.name}</div>
+        <div class="ss-stats">
+          <span class="${stateClass}">Get in: <strong>${i < currentIdx ? getIn : '-'}</strong></span>
+          <span class="${stateClass}">Get down: <strong>${i < currentIdx ? getDown : '-'}</strong></span>
+        </div>
+      </div>`;
+  });
+  goTo('sSummary');
 }
 
 function showAbout() {
@@ -716,8 +852,17 @@ function showAbout() {
 
 function logout() {
   closeMenu();
-  document.getElementById('pwd').value = '';
+  clearInterval(otpTimer);
+  document.getElementById('sendOtpBtn').style.display = 'flex';
+  document.getElementById('otpSection').style.display = 'none';
+  document.getElementById('verifyOtpBtn').style.display = 'none';
+  document.getElementById('cancelOtpBtn').style.display = 'none';
+  document.getElementById('otpInput').value = '';
+  document.getElementById('otpErrMsg').style.visibility = 'hidden';
+  document.getElementById('errMsg').style.visibility = 'hidden';
   appState.busCode = ''; appState.selectedStop = null; appState.adults = 0; appState.children = 0;
   goTo('s1');
 }
 </script>
+</body>
+</html>
